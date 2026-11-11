@@ -12,7 +12,7 @@ New-Item -ItemType Directory -Force $dist | Out-Null
 if (Test-Path $zipPath) { Remove-Item -Force $zipPath }
 
 # Only the files the extension needs at runtime.
-$files = @('manifest.json', 'content.js') +
+$files = @('manifest.json', 'settings.js', 'content.js', 'media-keys.js', 'popup.html', 'popup.js') +
     (Get-ChildItem (Join-Path $root 'icons') -Filter *.png | ForEach-Object { "icons/$($_.Name)" })
 
 # Compress-Archive in Windows PowerShell writes backslash entry names, which the stores reject,

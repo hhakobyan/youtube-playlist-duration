@@ -65,7 +65,14 @@
     return matches.length ? matches[matches.length - 1] : null;
   }
 
+  let settings = { ...DEFAULT_SETTINGS };
+
   function update() {
+    if (!settings.playlistDuration) {
+      document.getElementById(BADGE_ID)?.remove();
+      return;
+    }
+
     const panel = getPlaylistPanel();
     if (!panel) return;
 
@@ -105,5 +112,20 @@
   observer.observe(document.body, { childList: true, subtree: true });
 
   document.addEventListener('yt-navigate-finish', scheduleUpdate);
-  scheduleUpdate();
+
+  function applySettings(next) {
+    settings = { ...DEFAULT_SETTINGS, ...next };
+    document.documentElement.setAttribute(MEDIA_KEY_CONTROLS_ATTR, settings.mediaKeyControls ? 'on' : 'off');
+    scheduleUpdate();
+  }
+
+  chrome.storage.sync.get(DEFAULT_SETTINGS, applySettings);
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area !== 'sync') return;
+    const next = { ...settings };
+    for (const [key, { newValue }] of Object.entries(changes)) {
+      next[key] = newValue;
+    }
+    applySettings(next);
+  });
 })();

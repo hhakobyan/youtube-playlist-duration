@@ -9,8 +9,8 @@ powershell -ExecutionPolicy Bypass -File tools\pack.ps1
 Upload `dist/playlist-total-duration-<version>.zip`. All listing text is in
 [STORE_LISTING.md](STORE_LISTING.md).
 
-Before submitting, take at least one screenshot (1280x800 or 640x400) of a YouTube
-playlist page showing the total, e.g. `1 / 5 4:25:14`.
+Before submitting, take screenshots (1280x800 or 640x400): a YouTube playlist page
+showing the total (e.g. `1 / 5 4:25:14`), the paused player with controls, and the settings popup.
 
 ---
 
@@ -25,13 +25,13 @@ playlist page showing the total, e.g. `1 / 5 4:25:14`.
    screenshot(s), optional 440x280 promo tile.
 4. **Privacy practices** tab:
    - Single purpose: paste from STORE_LISTING.md.
-   - Permission justification: host access to `https://www.youtube.com/*`.
+   - Permission justification: `storage` (saves the two on/off settings) and host access to `https://www.youtube.com/*`; text in STORE_LISTING.md.
    - Remote code: **No**.
    - Data usage: check nothing collected; tick all three certifications.
    - Privacy policy URL: `https://github.com/hhakobyan/youtube-playlist-duration/blob/main/PRIVACY.md`
 5. **Distribution** tab: Public, all regions (or choose).
 6. **Submit for review.** Review usually takes from a few days to a few weeks.
-   Small extensions with no permissions tend to be quick.
+   Small extensions with minimal permissions tend to be quick.
 
 ## Microsoft Edge Add-ons
 
@@ -57,6 +57,6 @@ playlist page showing the total, e.g. `1 / 5 4:25:14`.
 ## Common rejection reasons to avoid
 
 - Using "YouTube" as the first word of the name or the YouTube logo in the icon
-  (trademark). The name here is "Playlist Total Duration for YouTube" for that reason.
+  (trademark). The name here is "Playlist Duration & Controls for YouTube" for that reason.
 - Missing or vague single-purpose / permission justification.
 - Screenshots that don't show the extension working.
